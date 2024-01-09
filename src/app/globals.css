@@ -5,3 +5,11 @@
   margin: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+.main_body{
+  margin: 140px 42px;
+}
+.product_create_form{
+  margin:20px 200px;
+
+}

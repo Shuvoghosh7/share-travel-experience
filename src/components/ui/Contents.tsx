@@ -20,8 +20,8 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
             link: `/${base}`,
           },
           {
-            label: "student",
-            link: `/${base}/student`,
+            label: "Admin",
+            link: `/${base}/admin`,
           },
         ]}
       />

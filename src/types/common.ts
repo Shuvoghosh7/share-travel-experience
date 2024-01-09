@@ -51,3 +51,17 @@ export interface IMeta {
     updatedAt: string;
     __v: number;
   }
+
+  type Product = {
+    GuideImage: string;
+    Price: number;
+    ProductDescription: string;
+    ProductName: string;
+    createdAt: string;
+    id: string;
+    quantity: number;
+  };
+  
+ export interface ProductsType {
+    item: Product; 
+  }
