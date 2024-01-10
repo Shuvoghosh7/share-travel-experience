@@ -3,8 +3,10 @@ import Products from "@/components/ui/Products";
 import { useProductsQuery } from "@/redux/api/product/productApi";
 import { useDebounced } from "@/redux/hooks";
 import React, { useState } from "react";
-import styles from "@/app/style/Product.module.css";
+import styles from "@/style/Product.module.css";
 import { IMeta } from "@/types";
+import { Spin } from "antd";
+import Loading from "@/app/loading";
 export default function Product() {
   const query: Record<string, any> = {};
 
@@ -29,13 +31,15 @@ export default function Product() {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-  const { data, isLoading,isError } = useProductsQuery({ ...query });
+  const { data, isLoading, isError } = useProductsQuery({ ...query });
 
   const products = data?.products;
-  const meta:any = data?.meta;
- 
-  let content = null;
+  const meta: any = data?.meta;
 
+  let content = null;
+  if (isLoading) {
+    content =<div><Loading/></div>
+  }
   if (!isLoading && isError) {
     content = "There was an error";
   }
@@ -50,34 +54,37 @@ export default function Product() {
     ));
   }
   return <div className="main_body">
-      <h1 className={styles.product_page_title}>All Product</h1>
+    <h1 className={styles.product_page_title}>All Product</h1>
+    <div className={styles.product_search_input}>
       <input
-          type="text"
-          placeholder="Search..."
-          style={{
-            width: "20%",
-            border:"2px solid black"
-          }}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-     <div className={styles.product_container}>{content}</div>
-     <div className="mt-5">
-        {Array.from({ length: Math.ceil(meta?.total / size) }, (_, index) => (
-          <button
-            key={index + 1}
-            className={`bg-red-400 py-1 px-2 ml-3 ${
-              index + 1 === activePage ? 'bg-blue-400' : ''
+        type="text"
+        placeholder="Search..."
+        style={{
+          width: "20%",
+          border: "2px solid black"
+        }}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+
+      />
+    </div>
+
+    <div className={styles.product_container}>{content}</div>
+    <div className={styles.pagination_container}>
+      {Array.from({ length: Math.ceil(meta?.total / size) }, (_, index) => (
+        <button
+          key={index + 1}
+          className={`${styles.pagination_item} ${index + 1 === activePage ? styles.pagination_active_item : ''
             }`}
-            onClick={() => {
-              setActivePage(index + 1);
-              setPage(index + 1);
-            }}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+          onClick={() => {
+            setActivePage(index + 1);
+            setPage(index + 1);
+          }}
+        >
+          {index + 1}
+        </button>
+      ))}
+    </div>
   </div>;
 }

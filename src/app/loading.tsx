@@ -1,10 +1,11 @@
+import { Spin } from "antd";
+
 const Loading = () => {
-    return (
-      <div>
-        <h1>Loading....</h1>
-      </div>
-    );
-  };
-  
-  export default Loading;
-  
+  return (
+    <Spin tip="Loading" size="large" className="loading_spin">
+      <div className="content" />
+    </Spin>
+  );
+};
+
+export default Loading;

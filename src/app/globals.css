@@ -13,3 +13,11 @@
   margin:20px 200px;
 
 }
+.loading_spin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_main_container{
+  margin: 140px 42px;
+}

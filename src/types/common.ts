@@ -65,3 +65,4 @@ export interface IMeta {
  export interface ProductsType {
     item: Product; 
   }
+
