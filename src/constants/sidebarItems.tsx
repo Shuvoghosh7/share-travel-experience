@@ -21,9 +21,14 @@ export const sidebarItems = (role: string) => {
       key: `/${role}/manage-student`,
     },
     {
-      label: <Link href={`/${role}/manage-faculty`}>Manage Faculty</Link>,
+      label: <Link href={`/${role}/createGuide`}>Create Guide</Link>,
       icon: <TableOutlined />,
       key: `/${role}/manage-faculty`,
+    },
+    {
+      label: <Link href={`/${role}/ALLBLOG`}>ALL BLOG</Link>,
+      icon: <TableOutlined />,
+      key: `/${role}/manage-ALLBLOG`,
     },
   ];
 

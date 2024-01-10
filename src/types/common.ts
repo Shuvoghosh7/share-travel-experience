@@ -65,4 +65,19 @@ export interface IMeta {
  export interface ProductsType {
     item: Product; 
   }
+  type Guide = {
+    Name: string;
+    CoverageArea: string;
+    PricePerDay: number;
+    GuideImage: string;
+    Status: string;
+    ProductName: string;
+    createdAt: string;
+    id: string;
+    
+  };
+  
+ export interface GuideType {
+    item: Guide; 
+  }
 

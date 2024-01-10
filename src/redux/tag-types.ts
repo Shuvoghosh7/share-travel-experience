@@ -1,13 +1,16 @@
 export enum tagTypes {
   reservation = "reservation",
-  post="post",
-  product="product"
+  blog="blog",
+  product="product",
+  guide="guide"
+  
  
 }
 
 export const tagTypesList = [
   tagTypes.reservation,
-  tagTypes.post,
-  tagTypes.product
+  tagTypes.blog,
+  tagTypes.product,
+  tagTypes.guide
 
 ];
