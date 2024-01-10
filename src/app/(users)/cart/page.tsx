@@ -24,14 +24,14 @@ const Name = () => {
   };
 
   useEffect(() => {
-    if (carts && carts.length > 0) {
+    
       const mappedContent = carts.map((cart) => (
         <CartItem key={cart.id} cart={cart} />
       ));
       setContent(mappedContent);
       const calculatedTotalPrice = calculateTotalPrice();
       setTotalPrice(calculatedTotalPrice);
-    }
+    
   }, [carts]);
 
   return (

@@ -1,17 +1,22 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import styles from "@/app/style/Navbar.module.css";
+import styles from "@/style/Navbar.module.css";
 import Link from "next/link";
 
 import Image from "next/image";
 import { ImMenu } from 'react-icons/im';
 import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux/hooks";
 
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    let state = useSelector((state) => state);
+    const [totalProduct, setTotalProduct] = useState<any | null>(0);
+    const state = useAppSelector((state) => state);
+    const carts = state.carts.carts;
+
+  
    
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -40,8 +45,14 @@ const Navbar = () => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
+        const carts = state.carts.carts;
+        setTotalProduct(carts)
+
     }, []);
     
+    useEffect(()=>{
+        setTotalProduct(carts)
+    },[carts])
     
     return (
         <nav className={styles.navbar} >
@@ -87,7 +98,7 @@ const Navbar = () => {
                    
                     <li>
                         <Link href="/cart" className={styles.menu_link}>
-                           Cart         
+                           Cart({totalProduct.length > 0 ? totalProduct.length : 0})        
                         </Link>
                     </li>
                    
