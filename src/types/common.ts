@@ -80,4 +80,21 @@ export interface IMeta {
  export interface GuideType {
     item: Guide; 
   }
+  type Blog = {
+    AuthorName: string;
+    PostCategory: string;
+    PostDate: string;
+    PostDescription: string;
+    PostImage: string;
+    PostTitle: string;
+    Status: string;
+    createdAt: string;
+    id: string;
+    
+  };
+  
+ export interface BlogType {
+    item: Blog; 
+  }
 
+ 

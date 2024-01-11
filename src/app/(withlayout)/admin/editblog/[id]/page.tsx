@@ -22,8 +22,7 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
         }
     };
     return (
-        <div className="main_container">
-            <h1>Edit blog:{id}</h1>
+        <div style={{margin:"20px 100px"}}>
             <Form submitHandler={onSubmit} >
                 <FormSelectField
                     size="large"
@@ -32,7 +31,7 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
                     label="Change Status"
                     placeholder="Select"
                 />
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" style={{marginTop:"10px"}}>
                     Update
                 </Button>
             </Form>

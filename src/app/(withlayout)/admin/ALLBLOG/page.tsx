@@ -91,7 +91,7 @@ export default function ALLBLOG() {
               <EyeInvisibleOutlined/>
               </Button>
             </Link>
-            <Link href={`/blog/edit/${data?.id}`}>
+            <Link href={`/admin/editblog/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",

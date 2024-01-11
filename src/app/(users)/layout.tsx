@@ -1,4 +1,5 @@
 "use client"
+import Footer from "@/components/share/Footer";
 import Navbar from "@/components/share/Navbar";
 import Contents from "@/components/ui/Contents";
 import SideBar from "@/components/ui/Sidebar";
@@ -12,6 +13,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <div>
       <Navbar/>
       <div>{children}</div>
+      <Footer/>
     </div>
   );
 };
