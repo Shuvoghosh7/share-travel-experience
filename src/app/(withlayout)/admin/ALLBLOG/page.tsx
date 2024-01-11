@@ -4,6 +4,7 @@ import {
   EditOutlined,
   EyeOutlined,
   ReloadOutlined,
+  EyeInvisibleOutlined
 } from "@ant-design/icons";
 import { useBlogsQuery, useDeleteblogMutation } from "@/redux/api/blog/blogApi";
 import { useDebounced } from "@/redux/hooks";
@@ -79,7 +80,18 @@ export default function ALLBLOG() {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/super_admin/department/edit/${data?.id}`}>
+            <Link href={`/blog/${data?.id}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                onClick={() => console.log(data)}
+                type="primary"
+              >
+              <EyeInvisibleOutlined/>
+              </Button>
+            </Link>
+            <Link href={`/blog/edit/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",

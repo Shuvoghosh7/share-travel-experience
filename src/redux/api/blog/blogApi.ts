@@ -43,6 +43,16 @@ export const reservationApi = baseApi.injectEndpoints({
     }),
 
 
+       // update single department by id
+       updateBlog: build.mutation({
+        query: (data) => ({
+          url:  `${POST_URL}/${data.id}`,
+          method: "PATCH",
+          data: data.body,
+        }),
+        invalidatesTags: [tagTypes.blog],
+      }),
+
      // delete existing building
      deleteblog: build.mutation({
       query: (id) => ({
@@ -57,4 +67,4 @@ export const reservationApi = baseApi.injectEndpoints({
 });
 
 
-export const { useAddblogMutation,useBlogsQuery,useBlogQuery,useDeleteblogMutation } = reservationApi;
+export const { useAddblogMutation,useBlogsQuery,useBlogQuery,useDeleteblogMutation,useUpdateBlogMutation } = reservationApi;

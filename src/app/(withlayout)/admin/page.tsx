@@ -1,4 +1,4 @@
-import styles from '@/app/style/Deshborard.module.css'
+import styles from '@/style/Deshborard.module.css'
 
 const AdminPage = () => {
   return (
