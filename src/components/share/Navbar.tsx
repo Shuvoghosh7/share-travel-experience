@@ -85,7 +85,7 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                        <Link href="/createPosts" className={styles.menu_link}>
+                        <Link href="/blog/create" className={styles.menu_link}>
                            Create Blog
                         </Link>
                     </li>

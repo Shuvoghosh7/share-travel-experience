@@ -23,7 +23,7 @@ export const guideApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.guide],
     }),
 
-    //add product
+    //add Guide
     addGuide: build.mutation({
       query: (data) => ({
         url: `${GUIDE_URL}/create_guide`,

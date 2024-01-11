@@ -12,3 +12,25 @@ export const blogOptions = [
         value:"Success"
     },
 ]
+export const blogCatagory = [
+    {
+        label: "Forest",
+        value:"Forest"
+    },
+    {
+        label: "River",
+        value:"River"
+    },
+    {
+        label: "Sea_beach",
+        value:"Sea_beach"
+    },
+    {
+        label: "Mountain",
+        value:"Mountain"
+    },
+    {
+        label: "Other",
+        value:"Other"
+    },
+]
