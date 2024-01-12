@@ -34,3 +34,16 @@ export const blogCatagory = [
         value:"Other"
     },
 ]
+export const reservationPayment = [
+    {
+        label: "Pending",
+        value:"Pending"
+    },
+    {
+        label: "Complete",
+        value:"Complete"
+    },
+    
+]
+
+  

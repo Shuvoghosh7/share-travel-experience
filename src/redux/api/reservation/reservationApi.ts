@@ -6,7 +6,7 @@ const RESERVATION_URL = "/reservation";
 export const reservationApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     // get all
-    reservation: build.query({
+    reservations: build.query({
       query: (arg) => {
         return {
           url: RESERVATION_URL,
@@ -57,8 +57,8 @@ export const reservationApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useReservationsQuery,
   useAddReservationMutation,
-  useReservationQuery,
   useUpdateReservationMutation,
   useDeleteReservationMutation,
 } = reservationApi;
