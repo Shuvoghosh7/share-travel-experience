@@ -33,23 +33,7 @@ export default function Serveses() {
           </div>
         </div>
 
-        {/* travle  */}
-        <div className={styles.serves_contain}>
-          <div>
-            <Image
-              src={ds2}
-              width={100}
-              height={100}
-              alt="Picture of the author"
-              className={styles.auto_ds}
-            />
-            <h4>Provide Transport</h4>
-            <p>
-              <strong>Contact:</strong> 01772385111
-            </p>
-          </div>
-        </div>
-
+    
         {/* product  */}
         <div className={styles.serves_contain}>
           <div>

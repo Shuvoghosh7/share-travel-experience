@@ -128,7 +128,8 @@ const Reservation = () => {
     return (
         <div>
             <div>
-                ALL Reservation
+                
+                <h2 style={{marginBottom:"10px"}}>ALL Reservation</h2>
                 <UMTable
                     loading={isLoading}
                     columns={columns}

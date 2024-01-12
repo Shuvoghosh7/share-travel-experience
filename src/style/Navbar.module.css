@@ -1,247 +1,247 @@
 /* Add styles for the sticky navbar */
 .navbar.fixed {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: all 0.3s ease;
-    height: 100px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.3s ease;
+  height: 100px;
+}
+
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.7rem 7.5rem;
+  background-color: transparent;
+  color: #571111;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 110px;
+}
+
+.navbar.hidden {
+  top: -100px;
+}
+
+
+
+.logo {
+  color: #fd7e14;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+/* .gphoto{
+  margin-top: -12px;
+} */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-menu li {
+  margin: 0 1rem;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+
+}
+.menu_link{
+  text-decoration: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdown_toggle {
+  cursor: pointer;
+}
+
+.dropdown_menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  padding: 0.5rem;
+}
+
+.active .dropdown_menu {
+  display: block;
+}
+
+.menuButton {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
   }
-  
-  
-  .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav_book_btn{
+  position: relative;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: #fd7e14;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 13px 0 1px;
+  cursor: pointer;
+  z-index: 1;
+}
+.nav_book_btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  clip-path: circle(0% at 50% 50%);
+  background: rgba(36, 36, 36, 0.3);
+  transition: clip-path 0.4s ease-out;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+.nav_book_btn:hover:before {
+  clip-path: circle(100% at 50% 50%);
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+
+  .nav-menu.active {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.7rem 3rem;
-    background-color: transparent;
-    color: #571111;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 110px;
   }
-  
-  .navbar.hidden {
-    top: -100px;
-  }
-  
-  
-  
-  .logo {
-    color: #fd7e14;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-  /* .gphoto{
-    margin-top: -12px;
-  } */
+
   .nav-menu ul {
     list-style: none;
+    padding: 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    line-height: 35px;
   }
-  
-  
+
+
   .nav-menu li {
-    margin: 0 1rem;
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-  
+    margin: 0;
+    padding: 0.5rem 1rem;
+
   }
-  .menu_link{
-    text-decoration: none;
-  }
-  
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown .dropdown_toggle {
-    cursor: pointer;
-  }
-  
-  .dropdown_menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    padding: 0.5rem;
-  }
-  
-  .active .dropdown_menu {
-    display: block;
-  }
-  
+
   .menuButton {
-    display: none;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(10px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  .nav_book_btn{
-    position: relative;
-    font-weight: 700;
-    font-size: 1.2rem;
-    background: #fd7e14;
-    color: white;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: none;
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 13px 0 1px;
-    cursor: pointer;
-    z-index: 1;
-  }
-  .nav_book_btn:before {
-    content: "";
+    display: block;
     position: absolute;
-    z-index: -1;
-    clip-path: circle(0% at 50% 50%);
-    background: rgba(36, 36, 36, 0.3);
-    transition: clip-path 0.4s ease-out;
-    left: 0;
+    right: 1rem;
+    color: #fd7e14;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 30px;
+  
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 4rem;
     right: 0;
-    top: 0;
-    bottom: 0;
-    border-radius: 5px;
+    background-color: #ebe9e9;
+    color: #fd7e14;
+    width: 300px;
+    z-index: 999;
+    padding: 10px 0px;
+
   }
-  
-  .nav_book_btn:hover:before {
-    clip-path: circle(100% at 50% 50%);
-    border-radius: 5px;
+
+  .nav-menu.active {
+    display: block;
+    height: 100vh;
   }
-  
-  @media (max-width: 768px) {
-  
-    .nav-menu.active {
-      display: flex;
-    }
-  
-    .nav-menu ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      line-height: 35px;
-    }
-  
-  
-    .nav-menu li {
-      margin: 0;
-      padding: 0.5rem 1rem;
-  
-    }
-  
-    .menuButton {
-      display: block;
-      position: absolute;
-      right: 1rem;
-      color: #fd7e14;
-      border: none;
-      padding: 0.2rem 0.5rem;
-      cursor: pointer;
-      z-index: 1000;
-      font-size: 30px;
+ 
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 35px;
+    align-items: start;
+  }
+
+
+  .nav-menu li {
+    margin: 0;
+    padding: 0.5rem 2rem;
+    font-size: 20px;
+    line-height: 60px;
     
-    }
-  
-    .nav-menu {
-      display: none;
-      position: absolute;
-      top: 4rem;
-      right: 0;
-      background-color: #ebe9e9;
-      color: #fd7e14;
-      width: 300px;
-      z-index: 999;
-      padding: 10px 0px;
-  
-    }
-  
-    .nav-menu.active {
-      display: block;
-      height: 100vh;
-    }
-   
+
   }
+.nav_book_btn {
+  margin-left: 25px !important;
+}
+
+  .menuButton {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    color: #fd7e14;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 30px;
   
-  @media screen and (min-width: 769px) and (max-width: 1023px) {
-    .nav-menu.active {
-      display: flex;
-    }
-  
-    .nav-menu ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      line-height: 35px;
-      align-items: start;
-    }
-  
-  
-    .nav-menu li {
-      margin: 0;
-      padding: 0.5rem 2rem;
-      font-size: 20px;
-      line-height: 60px;
-      
-  
-    }
-  .nav_book_btn {
-    margin-left: 25px !important;
   }
-  
-    .menuButton {
-      display: block;
-      position: absolute;
-      right: 1rem;
-      color: #fd7e14;
-      border: none;
-      padding: 0.2rem 0.5rem;
-      cursor: pointer;
-      z-index: 1000;
-      font-size: 30px;
-    
-    }
-  
-    .nav-menu {
-      display: none;
-      position: absolute;
-      top: 4rem;
-      right: 0;
-      background-color: #ebe9e9;
-      color: #fd7e14;
-      width: 200px;
-      z-index: 999;
-      padding: 10px 0px;
-  
-    }
-  
-    .nav-menu.active {
-      display: block;
-      height: 100vh;
-      width: 400px;
-    }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    background-color: #ebe9e9;
+    color: #fd7e14;
+    width: 200px;
+    z-index: 999;
+    padding: 10px 0px;
+
   }
+
+  .nav-menu.active {
+    display: block;
+    height: 100vh;
+    width: 400px;
+  }
+}

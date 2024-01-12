@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 10% 85%;
   gap: 40px;
-  margin: 140px 45px;
+  margin: 140px 120px;
 }
 .catagory_nav_menu ul li {
   list-style: none;

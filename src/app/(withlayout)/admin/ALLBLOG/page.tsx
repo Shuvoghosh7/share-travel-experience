@@ -128,7 +128,7 @@ export default function ALLBLOG() {
   };
   return (
     <div>
-      ALLBLOG
+      <h2 style={{marginBottom:"10px"}}>ALLBLOG</h2>
       <UMTable
         loading={isLoading}
         columns={columns}
