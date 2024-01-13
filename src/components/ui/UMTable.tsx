@@ -34,6 +34,7 @@ const UMTable = ({
         onChange: onPaginationChange,
       }
     : false;
+    
 
   return (
     <Table
@@ -42,6 +43,7 @@ const UMTable = ({
       dataSource={dataSource}
       pagination={paginationConfig}
       onChange={onTableChange}
+      className="responsiveTable"
     />
   );
 };
