@@ -35,6 +35,11 @@ export const sidebarItems = (role: string) => {
       icon: <TableOutlined />,
       key: `/${role}/reservation`,
     },
+    {
+      label: <Link href={`/${role}/allOrder`}>Reservation</Link>,
+      icon: <TableOutlined />,
+      key: `/${role}/reservation`,
+    },
   ];
 
 

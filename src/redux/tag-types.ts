@@ -3,7 +3,8 @@ export enum tagTypes {
   reservation = "reservation",
   blog="blog",
   product="product",
-  guide="guide"
+  guide="guide",
+  order="order"
   
  
 }
@@ -13,6 +14,7 @@ export const tagTypesList = [
   tagTypes.blog,
   tagTypes.product,
   tagTypes.guide,
-  tagTypes.user
+  tagTypes.user,
+  tagTypes.order
 
 ];

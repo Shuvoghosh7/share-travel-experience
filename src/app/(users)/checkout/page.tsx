@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { clearCart } from "@/redux/slice/cartSlice";
 import React, { useEffect, useState } from "react"
 import { Flex } from "antd";
+import { useAddOrderMutation } from "@/redux/api/order/orderApi";
 
 const CheckoutPage = () => {
     const state = useAppSelector((state) => state);
@@ -17,48 +18,7 @@ const CheckoutPage = () => {
     const [subtotalPrice, setSubTotalPrice] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [cartItemsJSX, setCartItemsJSX] = useState<JSX.Element[]>([]);
-    const handlePlaceOrder = async () => {
-        const orderDetails = {
-            shippingAddress,
-            email,
-            name,
-            phone,
-            paymentMethod,
-            subtotal: calculateSubtotal(),
-            deliveryCharge: 50,
-            totalPrice: calculateTotalPrice(),
-            orderItems: carts.map((item) => ({
-                product: item.ProductName,
-                quantity: item.quantity,
-                price: item.Price,
-            })),
-        };
-        try {
-            const response = await fetch(
-                "http://localhost:5000/api/v1/order/create_order",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(orderDetails),
-                }
-            );
-
-            if (response.ok) {
-                // Clear local storage
-                localStorage.removeItem("carts");
-                dispatch(clearCart());
-
-            } else {
-                // Handle error scenarios
-                console.error("Failed to place order:", response.statusText);
-            }
-        } catch (error) {
-            // Handle network errors or other exceptions
-            console.log(error)
-        }
-    };
+   
 
     const calculateSubtotal = () => {
         return carts.reduce((total, item) => {
@@ -100,6 +60,49 @@ const CheckoutPage = () => {
         setCartItemsJSX(generatedCartItemsJSX);
 
     }, [carts])
+    const [addOrder] = useAddOrderMutation();
+    const handlePlaceOrder = async () => {
+        const orderDetails = {
+            shippingAddress,
+            email,
+            name,
+            phone,
+            paymentMethod,
+            subtotal: calculateSubtotal(),
+            deliveryCharge: 50,
+            totalPrice: totalPrice,
+            orderItems: carts.map((item) => ({
+                product: item.ProductName,
+                quantity: item.quantity,
+                price: item.Price,
+            })),
+        };
+        try {
+            const response = await fetch(
+                "http://localhost:5000/api/v1/order/create_order",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(orderDetails),
+                }
+            );
+
+            if (response.ok) {
+                // Clear local storage
+                localStorage.removeItem("carts");
+                dispatch(clearCart());
+
+            } else {
+                // Handle error scenarios
+                console.error("Failed to place order:", response.statusText);
+            }
+        } catch (error) {
+            // Handle network errors or other exceptions
+            console.log(error)
+        }
+    };
     return (
         <div className={styles.checkout_main_container}>
             <div className={styles.checkout_container}>
