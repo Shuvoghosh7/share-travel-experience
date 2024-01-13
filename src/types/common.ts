@@ -82,6 +82,7 @@ export interface IMeta {
   }
   type Blog = {
     AuthorName: string;
+    TravelLocation:string;
     PostCategory: string;
     PostDate: string;
     PostDescription: string;

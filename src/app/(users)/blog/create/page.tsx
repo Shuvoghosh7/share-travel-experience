@@ -36,7 +36,8 @@ export default function CreateBlog() {
 
     return (
         <div className="main_container">
-            <h1 style={{ margin: "20px 0" }}>Create Blog</h1>
+            <h1 style={{ margin: "20px 0" }}>Share Your Travel Stories</h1>
+           
 
             <div>
                 <Form submitHandler={onSubmit}>
@@ -53,7 +54,17 @@ export default function CreateBlog() {
                                 type="text"
                                 name="PostTitle"
                                 size="large"
-                                label="Product Name"
+                                label="Travel Blog Title"
+                                
+                            />
+                        </div>
+                        <div style={{ margin: "10px 0" }}>
+                            <FormInput
+                                type="text"
+                                name="TravelLocation"
+                                size="large"
+                                label="Travel Location"
+                                
                             />
                         </div>
                         <div style={{ margin: "10px 0" }}>
@@ -102,10 +113,12 @@ export default function CreateBlog() {
                         </div>
                     </div>
 
-                    <Button htmlType="submit" type="primary">
-                        Create
+                    <Button htmlType="submit" type="primary" className="submit_btn">
+                        Create Your Stories
                     </Button>
                 </Form>
+
+                <small style={{color:"red",fontWeight:"bold"}}><strong>Note:</strong> After the Admin reviews your stories and grants permission, you may showcase them Blog List.</small>
             </div>
         </div>
     );

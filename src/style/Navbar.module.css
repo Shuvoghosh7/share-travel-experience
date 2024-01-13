@@ -55,10 +55,13 @@
   font-weight: 600;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
+ 
 
 }
 .menu_link{
   text-decoration: none;
+  color: #fd7e14;
+  font-weight: bold;
 }
 
 .dropdown {

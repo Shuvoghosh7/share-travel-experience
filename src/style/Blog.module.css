@@ -27,6 +27,14 @@
     margin-top: 7px;
     
 }
+.travel_clocation{
+  text-transform: uppercase;
+  font-weight: bold;
+  
+}
+.travel_clocation strong{
+  color: #fd7e14;
+}
 .blog_cart_container h5{
     font-size: 17px;
     margin-top: 3px;

@@ -27,6 +27,7 @@ export default function ShowBlogType({ item }: BlogType) {
           title={<Link href={`/blog/${item.id}`} className={styles.blog_title}>{item.PostTitle}</Link>}
         />
         <p>{item.PostDescription.slice(0, 70)} ....</p>
+        <p className={styles.travel_clocation}><strong>Location:</strong> {item.TravelLocation}</p>
         <Flex justify="space-between" align="center">
           <h5 className={styles.author_name}>{item.AuthorName}</h5>
           <h5 className={styles.date}>{item.PostDate}</h5>

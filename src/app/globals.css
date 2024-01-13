@@ -26,6 +26,11 @@
 .responsiveTable{
   width: 100%;
 }
+.submit_btn{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
 
 @media (max-width: 767px) {
   .responsiveTable {
