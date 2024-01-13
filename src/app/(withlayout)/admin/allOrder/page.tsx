@@ -1,26 +1,25 @@
 "use client";
 import {
   DeleteOutlined,
-  EditOutlined,
-  EyeOutlined,
-  ReloadOutlined,
-  EyeInvisibleOutlined,
+  DownloadOutlined,
 } from "@ant-design/icons";
 import {
   useDeleteOrderMutation,
   useOrdersQuery,
 } from "@/redux/api/order/orderApi";
 import { useDebounced } from "@/redux/hooks";
-import { Button, message } from "antd";
+import { Button, Flex, message } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 import UMTable from "@/components/ui/UMTable";
+import jsPDF from "jspdf";
+import { generatePDF } from "@/constants/generatePDF";
 
 export default function Allorder() {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
-  const [size, setSize] = useState<number>(2);
+  const [size, setSize] = useState<number>(5);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -53,7 +52,7 @@ export default function Allorder() {
       message.error(err.message);
     }
   };
-
+ 
   const columns = [
     {
       title: "Customer Name",
@@ -111,16 +110,24 @@ export default function Allorder() {
       title: "Action",
       render: function (data: any) {
         return (
-          <>
+          <Flex justify="space-between" align="center">
             
+            <Button
+              onClick={() => generatePDF(data)}
+              type="primary"
+             
+            >
+             <DownloadOutlined />
+            </Button>
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"
               danger
+              style={{marginLeft:"10px"}}
             >
               <DeleteOutlined />
             </Button>
-          </>
+          </Flex>
         );
       },
     },
