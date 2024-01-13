@@ -142,6 +142,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 30px;
+ 
 }
 .checkout_product_item{
   background-color: #fff;

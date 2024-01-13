@@ -48,13 +48,13 @@ const Products = ({ item }: ProductsType) => {
   );
   return (
     <>
-    <div className={styles.show_product_container}>
+    <div>
       <Card
-        style={{ width: 300 }}
+        style={{ width: 300,background:"#fff",boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         cover={
           <Image
             src={GuideImage}
-            width={100}
+            width={300}
             height={250}
             className={styles.product_img}
             alt="Picture of the author"

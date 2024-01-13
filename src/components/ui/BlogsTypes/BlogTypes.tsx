@@ -38,9 +38,9 @@ export default function BlogTypes({ activeTab }: any) {
     query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading, isError } = useBlogsQuery({ ...query });
-  const blogs = data?.blogs;
+  const blogs = (data?.blogs as any);
   const meta: any = data?.meta;
-  console.log(blogs);
+
 
   let content = null;
   if (isLoading) {
