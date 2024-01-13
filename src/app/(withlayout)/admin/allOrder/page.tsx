@@ -112,11 +112,7 @@ export default function Allorder() {
       render: function (data: any) {
         return (
           <>
-            <div>
-              <Button type="primary" danger>
-                Print
-              </Button>
-            </div>
+            
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"

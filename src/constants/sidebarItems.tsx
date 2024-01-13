@@ -36,9 +36,9 @@ export const sidebarItems = (role: string) => {
       key: `/${role}/reservation`,
     },
     {
-      label: <Link href={`/${role}/allOrder`}>Reservation</Link>,
+      label: <Link href={`/${role}/allOrder`}>All Order</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/reservation`,
+      key: `/${role}/allOrder`,
     },
   ];
 

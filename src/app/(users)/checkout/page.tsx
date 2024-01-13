@@ -3,8 +3,11 @@ import styles from "@/style/Product.module.css";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { clearCart } from "@/redux/slice/cartSlice";
 import React, { useEffect, useState } from "react"
-import { Flex } from "antd";
+import { Flex, message } from "antd";
 import { useAddOrderMutation } from "@/redux/api/order/orderApi";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+
 
 const CheckoutPage = () => {
     const state = useAppSelector((state) => state);
@@ -18,7 +21,7 @@ const CheckoutPage = () => {
     const [subtotalPrice, setSubTotalPrice] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [cartItemsJSX, setCartItemsJSX] = useState<JSX.Element[]>([]);
-   
+    const router = useRouter();
 
     const calculateSubtotal = () => {
         return carts.reduce((total, item) => {
@@ -89,10 +92,14 @@ const CheckoutPage = () => {
                 }
             );
 
-            if (response.ok) {
+            if (response.ok) {   
                 // Clear local storage
                 localStorage.removeItem("carts");
                 dispatch(clearCart());
+                message.success("Thank you,Order Process Complet.Buy Other Product");
+                if(response.status === 200){
+                    router.push("/product");
+                  }
 
             } else {
                 // Handle error scenarios
