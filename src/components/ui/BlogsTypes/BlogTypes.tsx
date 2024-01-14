@@ -9,7 +9,7 @@ export default function BlogTypes({ activeTab }: any) {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
-  const [size, setSize] = useState<number>(2);
+  const [size, setSize] = useState<number>(6);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -38,9 +38,8 @@ export default function BlogTypes({ activeTab }: any) {
     query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading, isError } = useBlogsQuery({ ...query });
-  const blogs = (data?.blogs as any);
+  const blogs = data?.blogs as any;
   const meta: any = data?.meta;
-
 
   let content = null;
   if (isLoading) {
@@ -59,13 +58,15 @@ export default function BlogTypes({ activeTab }: any) {
   }
 
   if (!isLoading && !isError && blogs?.length > 0) {
-    content = blogs?.map((item:any) => (
+    content = blogs?.map((item: any) => (
       <ShowBlogType key={item.id} item={item} />
     ));
   }
   return (
     <div>
-      <div>{content}</div>
+      
+      <div className={styles.blogcartcontainer}>{content}</div>
+
       <div className={styles.pagination_container}>
         {Array.from({ length: Math.ceil(meta?.total / size) }, (_, index) => (
           <button

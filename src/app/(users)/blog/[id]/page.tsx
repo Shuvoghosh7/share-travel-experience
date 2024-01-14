@@ -8,6 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import RecentPost from "@/components/ui/BlogsTypes/RecentPost";
 import RelatedPosts from "@/components/ui/BlogsTypes/RelatedPosts";
+import Comment from "@/components/ui/BlogsTypes/Comment";
+import PostComment from "@/components/ui/BlogsTypes/PostComment";
 const BlogDetails = ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
@@ -50,6 +52,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
         </Flex>
       </div>
       <hr style={{ marginBottom: "40px" }} />
+
       <div className={styles.archive_container}>
         <div>
           <div>{data.PostDescription}</div>
@@ -73,6 +76,17 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
           <div>
             <h2>Related Posts</h2>
             <RelatedPosts PostCategory={data.PostCategory} />
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.comment_container}>
+        <div>
+          <div>
+            <Comment id={id} />
+          </div>
+          <div>
+            <PostComment id={id} />
           </div>
         </div>
       </div>

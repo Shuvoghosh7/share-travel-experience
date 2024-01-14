@@ -6,7 +6,7 @@ interface RecentPostProps {
     PostCategory: string; 
   }
 export default function RelatedPosts({PostCategory}:RecentPostProps) {
-console.log(PostCategory)
+
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);

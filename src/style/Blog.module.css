@@ -23,6 +23,11 @@
   font-weight: bold;
   color: #fd7e14;
 }
+.blogcartcontainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 .blog_cart_container p {
   margin-top: 7px;
 }
@@ -76,6 +81,14 @@
   font-size: 40px;
   color: #2c2c2c;
   margin-bottom: 20px;
+}
+
+/* comment posts  */
+.comment_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {
