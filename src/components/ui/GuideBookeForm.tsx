@@ -143,7 +143,7 @@ export default function GuideBookeForm({guideData}:GuideType | any) {
           />
         </div>
 
-        <div className={`${styles.form_group} mt-5`}>
+        <div className={`${styles.form_group}`} style={{marginTop:"20px"}}>
           <button type="submit" className={styles.form_control_btn}>
             Submit
           </button>

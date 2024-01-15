@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/style/Blog.module.css";
 import { useBlogQuery, useBlogsQuery } from "@/redux/api/blog/blogApi";
-import { Flex, message } from "antd";
+import { Col, Flex, Row, message } from "antd";
 import Loading from "@/app/loading";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +28,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
   return (
     <div className="main_container">
       <div className={styles.archive_titel}>
-        <Flex justify="space-between" align="center">
+        <div className={styles.archive_top_container}>
           <div>
             <Image
               src={data.PostImage}
@@ -38,24 +38,25 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
               alt="Picture of the author"
             />
           </div>
-          <div>
+          <div style={{ margin: "auto 0px" }}>
             <h1>{data.PostTitle}</h1>
-            <Flex justify="space-between" align="center">
+            <div>
               <p>
                 POSTED BY : <strong>{data.AuthorName}</strong>
               </p>
-              <p>
+              <p style={{marginTop:"10px"}}>
                 Post Date : <strong>{data.PostDate}</strong>
               </p>
-            </Flex>
+            </div>
+            
           </div>
-        </Flex>
+        </div>
       </div>
       <hr style={{ marginBottom: "40px" }} />
 
       <div className={styles.archive_container}>
-        <div>
-          <div>{data.PostDescription}</div>
+        <div className={styles.right_side}>
+          <div className={styles.archive_description}>{data.PostDescription}</div>
           <div>
             <Image
               src={data.PostImage}
@@ -68,12 +69,12 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
         </div>
 
         {/* side part of single page  */}
-        <div>
+        <div className={styles.left_side}>
           <div>
             <h2>Recent Post</h2>
             <RecentPost />
           </div>
-          <div>
+          <div style={{marginTop:"20px"}}>
             <h2>Related Posts</h2>
             <RelatedPosts PostCategory={data.PostCategory} />
           </div>

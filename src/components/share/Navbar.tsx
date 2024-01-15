@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/style/Navbar.module.css";
 import Link from "next/link";
-
+import logo from "../../assets/logo.png";
 import Image from "next/image";
 import { ImMenu } from "react-icons/im";
 import { useSelector } from "react-redux";
@@ -53,14 +53,13 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <Link href="/" className={styles.menu_link}>
-          {/* <Image
-                        src={himage}
-                        width={100}
-                        height={50}
-                        alt="Picture of the author"
-                        className={styles.gphoto}
-                    /> */}
-          <h1>logo</h1>
+          <Image
+            src={logo}
+            width={100}
+            height={50}
+            alt="Picture of the author"
+            className={styles.gphoto}
+          />
         </Link>
       </div>
       <button className={styles.menuButton} onClick={toggleMenu}>

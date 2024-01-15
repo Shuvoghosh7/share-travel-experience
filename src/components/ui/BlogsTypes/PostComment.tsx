@@ -33,6 +33,7 @@ export default function PostComment({ id }: any) {
   return (
     <div>
       <div className={styles.section_container}>
+        <h3 className={styles.post_comment}>Leave Your Comment</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="lg:flex">
             <input

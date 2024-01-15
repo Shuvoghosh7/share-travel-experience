@@ -36,6 +36,9 @@
   .responsiveTable {
     overflow-y: auto;
   }
+  .main_container {
+    margin: 140px 30px;
+  }
 }
 
 @media (max-width: 1023px) {

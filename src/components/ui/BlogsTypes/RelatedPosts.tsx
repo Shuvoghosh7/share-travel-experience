@@ -1,4 +1,5 @@
 "use client"
+import styles from "@/style/Blog.module.css";
 import { useBlogsQuery } from "@/redux/api/blog/blogApi";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -34,8 +35,8 @@ export default function RelatedPosts({PostCategory}:RecentPostProps) {
     <div>
       {blogs?.map((item: any) => (
         // eslint-disable-next-line react/jsx-key
-       <ul>
-        <li> <Link href={`/blog/${item.id}`}>{item.PostTitle}</Link></li>
+       <ul className={styles.recent_posts}>
+        <li> <Link href={`/blog/${item.id}`} className={styles.recent_post_link}>{item.PostTitle}</Link></li>
        </ul>
       ))}
     </div>

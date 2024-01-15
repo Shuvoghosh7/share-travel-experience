@@ -9,7 +9,7 @@ export default function Comment({ id }: any) {
     <div>
       <div className={styles.post_view_container}>
         <div>
-          {/* {data?.map((comment:any, index:any) => (
+          {data?.map((comment:any, index:any) => (
             <>
               <div className={styles.comment_info_container} key={index}>
                 <h3>{comment.Name}</h3>
@@ -17,12 +17,8 @@ export default function Comment({ id }: any) {
                 
               </div>
             </>
-          ))} */}
-          <h3>Lorem ipsum </h3>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-            minima.
-          </p>
+          ))}
+          
         </div>
       </div>
     </div>

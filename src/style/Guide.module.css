@@ -20,10 +20,12 @@
 .allguide_contain{
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    text-align: center;
-    padding: 30px 20px;
+    text-align: center; 
 }
-
+.allguide_cart_contain{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 .allguide_contain p{
     line-height: 1.1;
     color: #5e5e5e;
@@ -46,7 +48,26 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.allguide_contain .btn_block{
+
+.cart_text{
+    text-align: center;
+}
+.cart_text p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.cart_text h6{
+    font-size: 14px;
+    font-weight: 600;
+
+}
+.cart_text h5{
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.cart_text .btn_block{
     font-weight: 700;
     font-size: 1.2rem;
     background: #fd7e14;

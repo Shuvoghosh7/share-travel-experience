@@ -13,7 +13,7 @@ export default function SingleGuide({ params }: { params: { id: string } }) {
   console.log(id);
   return (
     <div className="main_container">
-      
+      <h4 style={{fontSize:"26px",textAlign:"center",marginBottom:"20px",textTransform:"uppercase"}}>Book your favorite guide</h4>
       <GuideBookeForm guideData={guideData}/>
     </div>
   );
