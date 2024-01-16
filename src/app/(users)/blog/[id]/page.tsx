@@ -55,7 +55,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
       <hr style={{ marginBottom: "40px" }} />
 
       <div className={styles.archive_container}>
-        <div className={styles.right_side}>
+        <div className={styles.left_side}>
           <div className={styles.archive_description}>{data.PostDescription}</div>
           <div>
             <Image
@@ -69,7 +69,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
         </div>
 
         {/* side part of single page  */}
-        <div className={styles.left_side}>
+        <div className={styles.right_side}>
           <div>
             <h2>Recent Post</h2>
             <RecentPost />

@@ -156,6 +156,21 @@
   font-weight: 500;
  }
 
+ .left_side {
+  overflow-y: auto;
+  height: 100vh;
+  scrollbar-width: thin;
+}
+
+.left_side::-webkit-scrollbar {
+  width: 0;
+}
+
+.right_side {
+  position: sticky;
+  top: 0;
+}
+
 @media (max-width: 768px) {
   .blog_main_container {
     display: grid;
