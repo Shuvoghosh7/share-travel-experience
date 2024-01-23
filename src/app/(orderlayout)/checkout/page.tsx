@@ -7,6 +7,7 @@ import { Flex, message } from "antd";
 import { useAddOrderMutation } from "@/redux/api/order/orderApi";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { getUserInfo } from "@/services/auth.service";
 
 
 const CheckoutPage = () => {
@@ -22,6 +23,10 @@ const CheckoutPage = () => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [cartItemsJSX, setCartItemsJSX] = useState<JSX.Element[]>([]);
     const router = useRouter();
+    
+
+
+   
 
     const calculateSubtotal = () => {
         return carts.reduce((total, item) => {
@@ -63,6 +68,7 @@ const CheckoutPage = () => {
         setCartItemsJSX(generatedCartItemsJSX);
 
     }, [carts])
+   
     const [addOrder] = useAddOrderMutation();
     const handlePlaceOrder = async () => {
         const orderDetails = {
@@ -92,14 +98,14 @@ const CheckoutPage = () => {
                 }
             );
 
-            if (response.ok) {   
+            if (response.ok) {
                 // Clear local storage
                 localStorage.removeItem("carts");
                 dispatch(clearCart());
                 message.success("Thank you,Order Process Complet.Buy Other Product");
-                if(response.status === 200){
+                if (response.status === 200) {
                     router.push("/product");
-                  }
+                }
 
             } else {
                 // Handle error scenarios
@@ -109,7 +115,14 @@ const CheckoutPage = () => {
             // Handle network errors or other exceptions
             console.log(error)
         }
+    
     };
+    const users = getUserInfo();
+    useEffect(()=>{
+        setName(users.FullName)
+        setPhone(users.Number)
+        setEmail(users.email)
+    },[users])
     return (
         <div className={styles.checkout_main_container}>
             <div className={styles.checkout_container}>
@@ -120,8 +133,8 @@ const CheckoutPage = () => {
                             Full Name: <br />
                             <input
                                 type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={name} 
+                                readOnly
                                 className={styles.checkout_input}
                             />
                         </label>
@@ -130,7 +143,8 @@ const CheckoutPage = () => {
                             <input
                                 type="text"
                                 value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
+                                readOnly
+                                
                                 className={styles.checkout_input}
                             />
                         </label>
@@ -139,7 +153,8 @@ const CheckoutPage = () => {
                             <input
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                readOnly
+                               
                                 className={styles.checkout_input}
                             />
                         </label>
