@@ -15,17 +15,13 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-      // Remove the "/admin/" prefix from the pathname
       const cleanPathname = pathname.replace("/admin/", "");
-
       const queryString = searchParams.toString();
       const url = queryString
         ? `${cleanPathname}?${queryString}`
         : cleanPathname;
       setUrl(url);
-      console.log(url);
-      // You can now use the modified URL
-      // ...
+      
     }, [pathname, searchParams]);
 
     return null;

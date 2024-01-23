@@ -13,11 +13,9 @@ const EidReservation = ({ params }: { params: { id: string } }) => {
     const onSubmit = async (values: any) => {
         message.loading("Updating.....");
         try {
-            // console.log(values);
             await updateOrder({ id, body: values });
             message.success("Order Status updated successfully");
         } catch (err: any) {
-            //   console.error(err.message);
             message.error(err.message);
         }
     };

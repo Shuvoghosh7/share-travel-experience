@@ -97,7 +97,4 @@ type Blog = {
 export interface BlogType {
   item: Blog;
 }
-export interface JwtPayload {
-  FullName: string;
-}
 

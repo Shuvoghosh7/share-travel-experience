@@ -1,23 +1,17 @@
-"use client";
+"use client"
 import {
-  DeleteOutlined,
-  DownloadOutlined,
-  EditOutlined
-} from "@ant-design/icons";
-import {
-  useDeleteOrderMutation,
-  useOrdersQuery,
-} from "@/redux/api/order/orderApi";
+    DeleteOutlined,
+   
+  } from "@ant-design/icons";
+import { useDeleteOrderMutation, useOrdersQuery } from "@/redux/api/order/orderApi";
 import { useDebounced } from "@/redux/hooks";
-import { Button, Flex, message } from "antd";
-import Link from "next/link";
-import React, { useState } from "react";
+import { getUserInfo } from "@/services/auth.service";
+import { Button, message } from "antd";
+import React, { useEffect, useState } from "react"
 import UMTable from "@/components/ui/UMTable";
-import jsPDF from "jspdf";
-import { generatePDF } from "@/constants/generatePDF";
 
-export default function Allorder() {
-  const query: Record<string, any> = {};
+const UserOrder = () => {
+    const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(5);
@@ -31,6 +25,8 @@ export default function Allorder() {
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
+  
+  const users = getUserInfo();
 
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
@@ -40,29 +36,21 @@ export default function Allorder() {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-  const { data, isLoading, isError } = useOrdersQuery({ ...query });
-
-  const reservations = data?.orders;
+  const { data, isLoading, isError } = useOrdersQuery({ ...query,email:users.email });
+  const userOrderdata = data?.orders;
   const meta: any = data?.meta;
+
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
       await deleteOrder(id);
-      message.success("Department Deleted successfully");
+      message.success("Order Deleted successfully");
     } catch (err: any) {
       message.error(err.message);
     }
   };
-
   const columns = [
-    {
-      title: "Customer Name",
-      dataIndex: "name",
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-    },
+   
     {
       title: "Product Name",
       dataIndex: "orderItems",
@@ -115,26 +103,7 @@ export default function Allorder() {
       title: "Action",
       render: function (data: any) {
         return (
-          <Flex justify="space-between" align="center">
-
-            <Link href={`/admin/allOrder/edit/${data?.id}`}>
-              <Button
-                style={{
-                  margin: "0px 5px",
-                }}
-                
-                type="primary"
-              >
-                <EditOutlined />
-              </Button>
-            </Link>
-            <Button
-              onClick={() => generatePDF(data)}
-              type="primary"
-
-            >
-              <DownloadOutlined />
-            </Button>
+         
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"
@@ -143,12 +112,11 @@ export default function Allorder() {
             >
               <DeleteOutlined />
             </Button>
-          </Flex>
+          
         );
       },
     },
   ];
-
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
@@ -161,21 +129,23 @@ export default function Allorder() {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
   return (
+    <div className='main_container'>
     <div>
-      <div>
-        <h2 style={{ marginBottom: "10px" }}>ALL Order</h2>
-        <UMTable
-          loading={isLoading}
-          columns={columns}
-          dataSource={reservations}
-          pageSize={size}
-          totalPages={meta?.total}
-          showSizeChanger={true}
-          onPaginationChange={onPaginationChange}
-          onTableChange={onTableChange}
-          showPagination={true}
-        />
-      </div>
+      <h2 style={{ marginBottom: "10px" }}>{users.FullName} ALL Order</h2>
+      <UMTable
+        loading={isLoading}
+        columns={columns}
+        dataSource={userOrderdata}
+        pageSize={size}
+        totalPages={meta?.total}
+        showSizeChanger={true}
+        onPaginationChange={onPaginationChange}
+        onTableChange={onTableChange}
+        showPagination={true}
+      />
     </div>
-  );
-}
+  </div>
+  )
+};
+
+export default UserOrder;
