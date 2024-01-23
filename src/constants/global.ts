@@ -45,5 +45,21 @@ export const reservationPayment = [
     },
     
 ]
+export const orderStatus = [
+    {
+        label: "Pending",
+        value:"Pending"
+    },
+    {
+        label: "On_The_Way",
+        value:"On_The_Way"
+    },
+
+    {
+        label: "Complete",
+        value:"Complete"
+    },
+    
+]
 
   

@@ -2,6 +2,7 @@
 import {
   DeleteOutlined,
   DownloadOutlined,
+  EditOutlined
 } from "@ant-design/icons";
 import {
   useDeleteOrderMutation,
@@ -52,7 +53,7 @@ export default function Allorder() {
       message.error(err.message);
     }
   };
- 
+
   const columns = [
     {
       title: "Customer Name",
@@ -105,25 +106,40 @@ export default function Allorder() {
       title: "Total Price",
       dataIndex: "totalPrice",
     },
+    {
+      title: "Order Status",
+      dataIndex: "OrderStatus",
+    },
 
     {
       title: "Action",
       render: function (data: any) {
         return (
           <Flex justify="space-between" align="center">
-            
+
+            <Link href={`/admin/allOrder/edit/${data?.id}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                onClick={() => console.log(data)}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
             <Button
               onClick={() => generatePDF(data)}
               type="primary"
-             
+
             >
-             <DownloadOutlined />
+              <DownloadOutlined />
             </Button>
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"
               danger
-              style={{marginLeft:"10px"}}
+              style={{ marginLeft: "10px" }}
             >
               <DeleteOutlined />
             </Button>
