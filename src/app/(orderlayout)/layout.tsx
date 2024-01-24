@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
     if (!userLoggedIn) {
-      router.push("/userLogin");
+      router.push("/login");
     }
     setIsLoading(true);
   }, [router, isLoading]);

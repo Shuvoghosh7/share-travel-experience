@@ -8,10 +8,6 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
     
 }
 
-interface UserInfo {
-    email: string;
-  
-  }
 
 export const getUserInfo = ()=> {
     const authToken = getFromLocalStorage(authKey) 

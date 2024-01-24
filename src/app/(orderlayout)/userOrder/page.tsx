@@ -27,6 +27,7 @@ const UserOrder = () => {
   // query["searchTerm"] = searchTerm;
   
   const users = getUserInfo();
+  const{email}=users;
 
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
@@ -36,7 +37,7 @@ const UserOrder = () => {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-  const { data, isLoading, isError } = useOrdersQuery({ ...query,email:users.email });
+  const { data, isLoading, isError } = useOrdersQuery({ ...query,email:email});
   const userOrderdata = data?.orders;
   const meta: any = data?.meta;
 

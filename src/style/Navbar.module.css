@@ -1,4 +1,8 @@
 /* Add styles for the sticky navbar */
+.activenav{
+  color: red !important;
+  font-size: 22px !important;
+}
 .navbar.fixed {
   position: sticky;
   top: 0;
@@ -62,6 +66,7 @@
   text-decoration: none;
   color: #fd7e14;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .dropdown {

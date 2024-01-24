@@ -4,7 +4,7 @@ import Image from "next/image";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
-
+import loginImage from '../../assets/login.png'
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.service";
 import { useUserLoginMutation } from "@/redux/api/authApi/authApi";
@@ -27,7 +27,7 @@ const LoginPage = () => {
          const res = await userLogin({ ...data }).unwrap();
          // console.log(res);
          if (res?.accessToken) {
-            router.push("/admin/ALLBLOG");
+            router.push("/checkout");
             message.success("User logged in successfully!");
          }
          storeUserInfo({ accessToken: res?.accessToken });
@@ -45,7 +45,7 @@ const LoginPage = () => {
          }}
       >
          <Col sm={12} md={16} lg={10}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem aut necessitatibus dolore corrupti consequatur ea dolores nemo voluptatem ipsa, cum saepe eius omnis doloribus officiis laboriosam ipsam pariatur velit accusantium?</p>
+            <Image src={loginImage}  width={600} height={600} alt="login image" />
          </Col>
          <Col sm={12} md={8} lg={8}>
             <h1
