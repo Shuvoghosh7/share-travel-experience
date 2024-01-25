@@ -1,4 +1,5 @@
 "use client";
+import { UserOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import styles from "@/style/Navbar.module.css";
 import Link from "next/link";
@@ -7,9 +8,10 @@ import Image from "next/image";
 import { ImMenu } from "react-icons/im";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "@/redux/hooks";
-import { isLoggedIn, removeUserInfo } from "@/services/auth.service";
+import { getUserInfo, isLoggedIn, removeUserInfo } from "@/services/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Avatar, Button, Dropdown, MenuProps, Row, Space } from "antd";
 
 const Navbar = () => {
   const router = useRouter();
@@ -17,6 +19,7 @@ const Navbar = () => {
   const checkuser = isLoggedIn()
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [userName, setUserName] = useState<string>('');
   const [totalProduct, setTotalProduct] = useState<any | null>(0);
   const state = useAppSelector((state) => state);
   const carts = state.carts.carts;
@@ -51,14 +54,27 @@ const Navbar = () => {
     setTotalProduct(carts);
   }, []);
 
+  const { FullName } = getUserInfo() as any;
+
   useEffect(() => {
     setTotalProduct(carts);
+    setUserName(FullName)
   }, [carts]);
-
-  const logout = () => {
-    return removeUserInfo(authKey)
-  }
-
+ 
+  const logOut = () => {
+    removeUserInfo(authKey);
+    router.push("/login");
+  };
+  const items: MenuProps["items"] = [
+    {
+      key: "0",
+      label: (
+        <Button onClick={logOut} type="text" danger>
+          Logout
+        </Button>
+      ),
+    },
+  ];
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -112,7 +128,31 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            {checkuser ? <button onClick={logout}>Logout</button> : ''}
+            <Row
+              justify="end"
+              align="middle"
+              style={{
+                height: "100%",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0px 5px",
+                  color:"#fd7e14",
+                  fontSize:"18px",
+                  fontWeight:"bold"
+                }}
+              >
+                {userName}
+              </p>
+              <Dropdown menu={{ items }}>
+                <a>
+                  <Space wrap size={16}>
+                    <Avatar size="large" icon={<UserOutlined />} />
+                  </Space>
+                </a>
+              </Dropdown>
+            </Row>
           </li>
 
         </ul>

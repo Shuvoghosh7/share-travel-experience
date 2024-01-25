@@ -16,8 +16,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     }
     setIsLoading(true);
   }, [router, isLoading]);
-  const users = getUserInfo();
-  const isAdmin = users?.Role === "Admin";
+  const { Role } = getUserInfo() as any;
+  const isAdmin = Role === "Admin";
 
   if (!isLoading) {
     return (

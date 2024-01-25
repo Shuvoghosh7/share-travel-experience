@@ -15,7 +15,7 @@ const CheckoutPage = () => {
     const dispatch = useAppDispatch();
     const carts = state.carts.carts;
     const [shippingAddress, setShippingAddress] = useState("");
-    const [email, setEmail] = useState("");
+    const [useremail, setUserEmail] = useState("");
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("CreditCard");
@@ -117,12 +117,13 @@ const CheckoutPage = () => {
         }
     
     };
-    const users = getUserInfo();
+    
+    const { FullName,Number,email } = getUserInfo() as any;
     useEffect(()=>{
-        setName(users.FullName)
-        setPhone(users.Number)
-        setEmail(users.email)
-    },[users])
+        setName(FullName)
+        setPhone(Number)
+        setUserEmail(useremail)
+    },[])
     return (
         <div className={styles.checkout_main_container}>
             <div className={styles.checkout_container}>
