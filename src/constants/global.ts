@@ -63,3 +63,15 @@ export const orderStatus = [
 ]
 
   
+export const areaOptions = [
+    {
+        label: "Dhaka",
+        value:"Dhaka"
+    },
+    {
+        label: "Comilla",
+        value:"Comilla"
+    },  
+]
+
+  

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Card } from "antd";
 const { Meta } = Card;
 const GuideCart = ({ item }: GuideType) => {
-  console.log(item);
   return (
     <div>
       <Card

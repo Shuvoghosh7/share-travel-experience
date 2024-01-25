@@ -66,6 +66,7 @@ export interface ProductsType {
   item: Product;
 }
 type Guide = {
+  map(arg0: (area: any, index: any) => import("react").JSX.Element): import("react").ReactNode;
   Name: string;
   CoverageArea: string;
   PricePerDay: number;

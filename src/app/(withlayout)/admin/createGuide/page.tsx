@@ -9,6 +9,8 @@ import UploadImage from "@/components/ui/UploadImage";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import FormNumberInput from "@/components/Forms/FormNumberInput";
 import { useAddGuideMutation } from "@/redux/api/guide/guideApi";
+import FormMultiSelectField, { SelectOptions } from "@/components/Forms/FormMultiSelectField";
+import { areaOptions } from "@/constants/global";
 
 export default function CreateGuide() {
   const [addGuide] = useAddGuideMutation();
@@ -22,8 +24,10 @@ export default function CreateGuide() {
     formData.append("data", data);
     message.loading("Creating...");
     try {
-      await addGuide(formData);
-      console.log("Product created successfully!");
+      const res=await addGuide(formData).unwrap();
+      if(res){
+        console.log("Product created successfully!");
+      }
     } catch (err: any) {
       console.error(err.message);
     }
@@ -51,11 +55,18 @@ export default function CreateGuide() {
                 label="Name"
               />
             </div>
-            <div style={{ margin: "10px 0" }}>
+            {/* <div style={{ margin: "10px 0" }}>
               <FormTextArea
                 name="CoverageArea"
                 label="Coverage Area"
                 rows={4}
+              />
+            </div> */}
+            <div style={{ margin: "10px 0px" }}>
+              <FormMultiSelectField
+                options={areaOptions as SelectOptions[]}
+                name="CoverageArea"
+                label="Coverage Area"
               />
             </div>
             <div  style={{ margin: "10px 0" }}>
