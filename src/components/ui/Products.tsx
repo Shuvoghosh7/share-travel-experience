@@ -31,7 +31,7 @@ const Products = ({ item }: ProductsType) => {
     dispatch(addToCarts(item));
   };
   const content = (
-    <div>
+    <div className={styles.popup_container}>
       <Image
         src={GuideImage}
         width={300}
@@ -41,7 +41,7 @@ const Products = ({ item }: ProductsType) => {
       />
       {/* <h1>{ProductName}</h1>
       <p>Price:{Price}</p> */}
-      <p>Description:</p>
+      <h3>Description:</h3>
       <p>{ProductDescription}</p>
 
     </div>

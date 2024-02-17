@@ -6,8 +6,9 @@
 
 .product_container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin-top: 40px;
 }
 
 .popup-overlay {
@@ -68,8 +69,13 @@
   
 }
 .popup_product_img{
-  width: 500px;
-  height: 500px;
+  width: 100%;
+}
+.popup_container h3{
+  margin: 10px 0;
+}
+.popup_container p{
+  line-height: 1.8;
 }
 .product_search_input{
   display: flex;

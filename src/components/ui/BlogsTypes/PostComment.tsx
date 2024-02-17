@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "@/style/Blog.module.css";
+import { message } from "antd";
 export default function PostComment({ id }: any) {
   const { handleSubmit, control, register, reset } = useForm();
 
@@ -8,7 +9,7 @@ export default function PostComment({ id }: any) {
     data.PostId = id;
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/comment/create_comment",
+        "https://sharetravelexperienceserver-production.up.railway.app/api/v1/comment/create_comment",
         {
           method: "POST",
           headers: {
@@ -22,6 +23,9 @@ export default function PostComment({ id }: any) {
         // Handle error when the response is not successful
         throw new Error("Failed to create Comment");
       }
+      if(response.ok){
+        message.success("Comment created successfully!");
+      }
 
       const responseData = await response.json();
 
@@ -32,10 +36,10 @@ export default function PostComment({ id }: any) {
   };
   return (
     <div>
-      <div className={styles.section_container}>
+      <div className={styles.create_comment_container}>
         <h3 className={styles.post_comment}>Leave Your Comment</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="lg:flex">
+          <div className={styles.comment_name}>
             <input
               type="text"
               className={styles.form_control}
@@ -45,6 +49,7 @@ export default function PostComment({ id }: any) {
             <input
               type="email"
               className={`${styles.form_control} lg:ml-12`}
+              style={{marginLeft:"20px"}}
               placeholder="Email*"
               {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
             />

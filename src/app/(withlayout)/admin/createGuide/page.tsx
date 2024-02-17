@@ -1,7 +1,6 @@
 "use client";
-
 import Form from "@/components/Forms/Form";
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Row, message } from "antd";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import FormInput from "@/components/Forms/FormInput";
@@ -14,6 +13,7 @@ import { areaOptions } from "@/constants/global";
 
 export default function CreateGuide() {
   const [addGuide] = useAddGuideMutation();
+  const [uploadKey, setUploadKey] = useState(Date.now());
   const onSubmit = async (values: any) => {
     const obj = { ...values };
     const file = obj["file"];
@@ -26,7 +26,8 @@ export default function CreateGuide() {
     try {
       const res=await addGuide(formData).unwrap();
       if(res){
-        console.log("Product created successfully!");
+        message.success("Guide created successfully!");
+        setUploadKey(Date.now());
       }
     } catch (err: any) {
       console.error(err.message);
@@ -85,7 +86,7 @@ export default function CreateGuide() {
                 marginBottom: "10px",
               }}
             >
-              <UploadImage name="file" />
+              <UploadImage key={uploadKey} name="file" />
             </div>
           </div>
 

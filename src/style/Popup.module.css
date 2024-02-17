@@ -29,11 +29,17 @@
 }
 
 .close_button {
-    color: black !important;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    font-size: 25px;
+  color: red !important;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 30px;
+  background:#35929e;
+  opacity: 1;
+  border: 2px solid rgba(243, 156, 156, 0.3);
+  font-weight: 500;
+ padding: 0 12px;
+  border-radius: 50%;
 }
 
 
