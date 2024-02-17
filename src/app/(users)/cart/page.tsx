@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import React, { useEffect, useState, ReactElement } from "react";
@@ -32,7 +33,7 @@ const Name = () => {
       const calculatedTotalPrice = calculateTotalPrice();
       setTotalPrice(calculatedTotalPrice);
     
-  }, [carts]);
+  }, [carts,calculateTotalPrice]);
 
   return (
     <div className="cart_main_container">

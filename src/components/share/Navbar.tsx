@@ -52,7 +52,7 @@ const Navbar = () => {
     };
     const carts = state.carts.carts;
     setTotalProduct(carts);
-  }, []);
+  }, [state.carts.carts]);
 
   const { FullName } = getUserInfo() as any;
 
