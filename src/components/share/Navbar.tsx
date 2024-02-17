@@ -59,7 +59,7 @@ const Navbar = () => {
   useEffect(() => {
     setTotalProduct(carts);
     setUserName(FullName)
-  }, [carts]);
+  }, [carts,FullName]);
  
   const logOut = () => {
     removeUserInfo(authKey);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import styles from "@/style/Product.module.css";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -67,7 +68,7 @@ const CheckoutPage = () => {
         ));
         setCartItemsJSX(generatedCartItemsJSX);
 
-    }, [carts])
+    }, [carts,calculateTotalPrice,calculateTotalprice])
    
     const [addOrder] = useAddOrderMutation();
     const handlePlaceOrder = async () => {
@@ -123,7 +124,7 @@ const CheckoutPage = () => {
         setName(FullName)
         setPhone(Number)
         setUserEmail(useremail)
-    },[])
+    },[FullName,Number,email])
     return (
         <div className={styles.checkout_main_container}>
             <div className={styles.checkout_container}>
