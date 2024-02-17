@@ -26,7 +26,8 @@ const UserOrder = () => {
   query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
   
-  const users = getUserInfo();
+  const users = getUserInfo() as any;
+  console.log(users)
   const{email}=users;
 
   const debouncedTerm = useDebounced({
