@@ -17,15 +17,45 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({ cart }) => {
     const dispatch = useAppDispatch();
     const increaseItemQuantity = (item: { id: any; }) => {
-        dispatch(increaseQuantity({ id: item.id }));
+        dispatch(increaseQuantity({
+            id: item.id,
+            Price: 0,
+            ProductName: "",
+            quantity: 0,
+            createdAt: "",
+            productName: "",
+            productDescription: "",
+            price: 0,
+            guideImage: ""
+        }));
     };
 
     const decreaseItemQunaity = (item: { id: any; }) => {
-        dispatch(decreaseQuantity({ id: item.id }));
+        dispatch(decreaseQuantity({
+            id: item.id,
+            Price: 0,
+            ProductName: "",
+            quantity: 0,
+            createdAt: "",
+            productName: "",
+            productDescription: "",
+            price: 0,
+            guideImage: ""
+        }));
     };
 
     const removeItem = (item: { id: any; }) => {
-        dispatch(removeFormCart({ id: item.id }));
+        dispatch(removeFormCart({
+            id: item.id,
+            Price: 0,
+            ProductName: "",
+            quantity: 0,
+            createdAt: "",
+            productName: "",
+            productDescription: "",
+            price: 0,
+            guideImage: ""
+        }));
     };
 
     // Function to calculate total price for an individual item

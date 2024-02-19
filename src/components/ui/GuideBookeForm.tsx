@@ -24,8 +24,11 @@ export default function GuideBookeForm({guideData}:GuideType | any) {
 
       const totalPrice = differenceInDays * guideData.PricePerDay;
       setValue("TotalCost", totalPrice);
+    }else{
+      return 0
     }
   };
+
   const[addReservation]= useAddReservationMutation();
   const onSubmit:any= async (data: { GuideID: any; Payment: string; }) => {
     // Handle form submission here with the form data
@@ -33,7 +36,7 @@ export default function GuideBookeForm({guideData}:GuideType | any) {
     data.Payment = "Pending";
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/reservation/create_reservation",
+        "https://sharetravelexperienceserver-production.up.railway.app/api/v1/reservation/create_reservation",
         {
           method: "POST",
           headers: {

@@ -6,8 +6,9 @@ import CartItem from "@/components/ui/CartItem";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { cartState, increaseQuantity } from "@/redux/slice/cartSlice";
 import Image from "next/image";
-import Link from "next/link";
+
 import styles from "@/style/Product.module.css";
+import Link from "next/link";
 
 const Name = () => {
   const state = useAppSelector((state) => state);

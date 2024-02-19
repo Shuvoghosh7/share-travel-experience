@@ -3,7 +3,7 @@ import Footer from "@/components/share/Footer";
 import Navbar from "@/components/share/Navbar";
 import Contents from "@/components/ui/Contents";
 import SideBar from "@/components/ui/Sidebar";
-import { isLoggedIn } from "@/services/auth.service";
+import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import { Layout, Row, Space, Spin } from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -18,7 +18,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     }
     setIsLoading(true);
   }, [router, isLoading,userLoggedIn]);
-
+  const { Role } = getUserInfo() as any;
+  const isUser = Role === "User";
   if (!isLoading) {
     return (
       <Row
@@ -33,6 +34,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </Space>
       </Row>
     );
+  }
+  if (!isUser) {
+    router.push("/login");
+    return null;
   }
   return (
     <div>
