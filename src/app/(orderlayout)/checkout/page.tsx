@@ -70,7 +70,7 @@ const CheckoutPage = () => {
     };
     try {
       const response = await fetch(
-        "https://share-travel-experience.vercel.app/api/v1/order/create_order",
+        "https://sharetravelexperienceserver-production.up.railway.app/api/v1/order/create_order",
         {
           method: "POST",
           headers: {
