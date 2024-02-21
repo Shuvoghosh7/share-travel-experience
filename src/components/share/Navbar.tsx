@@ -8,18 +8,22 @@ import Image from "next/image";
 import { ImMenu } from "react-icons/im";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "@/redux/hooks";
-import { getUserInfo, isLoggedIn, removeUserInfo } from "@/services/auth.service";
+import {
+  getUserInfo,
+  isLoggedIn,
+  removeUserInfo,
+} from "@/services/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Avatar, Button, Dropdown, MenuProps, Row, Space } from "antd";
 
 const Navbar = () => {
   const router = useRouter();
-  const pathname = usePathname()
-  const checkuser = isLoggedIn()
+  const pathname = usePathname();
+  const checkuser = isLoggedIn();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string>("");
   const [totalProduct, setTotalProduct] = useState<any | null>(0);
   const state = useAppSelector((state) => state);
   const carts = state.carts.carts;
@@ -58,20 +62,31 @@ const Navbar = () => {
 
   useEffect(() => {
     setTotalProduct(carts);
-    setUserName(FullName)
-  }, [carts,FullName]);
- 
+    setUserName(FullName);
+  }, [carts, FullName]);
+
   const logOut = () => {
     removeUserInfo(authKey);
     router.push("/login");
   };
   const items: MenuProps["items"] = [
+  
     {
       key: "0",
+      label: (
+        <Button type="text" danger>
+           <Link href="/login">Login</Link>
+        </Button>
+  
+      ),
+    },
+    {
+      key: "1",
       label: (
         <Button onClick={logOut} type="text" danger>
           Logout
         </Button>
+  
       ),
     },
   ];
@@ -94,36 +109,65 @@ const Navbar = () => {
       <div className={`${styles["nav-menu"]} ${menuOpen ? styles.active : ""}`}>
         <ul className={styles.nav_menu_item}>
           <li onClick={toggleMenuList}>
-            <Link href="/" className={`${styles.menu_link} ${pathname === '/' ? styles.activenav : ''}`}>
+            <Link
+              href="/"
+              className={`${styles.menu_link} ${
+                pathname === "/" ? styles.activenav : ""
+              }`}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link href="/blog/allblogs" className={`${styles.menu_link} ${pathname === '/blog/allblogs' ? styles.activenav : ''}`}>
+            <Link
+              href="/blog/allblogs"
+              className={`${styles.menu_link} ${
+                pathname === "/blog/allblogs" ? styles.activenav : ""
+              }`}
+            >
               Blog List
             </Link>
           </li>
 
           <li>
-            <Link href="/blog/create" className={`${styles.menu_link} ${pathname === '/blog/create' ? styles.activenav : ''}`}>
+            <Link
+              href="/blog/create"
+              className={`${styles.menu_link} ${
+                pathname === "/blog/create" ? styles.activenav : ""
+              }`}
+            >
               Share Stories
             </Link>
           </li>
 
           <li>
-            <Link href="/product" className={`${styles.menu_link} ${pathname === '/product' ? styles.activenav : ''}`}>
+            <Link
+              href="/product"
+              className={`${styles.menu_link} ${
+                pathname === "/product" ? styles.activenav : ""
+              }`}
+            >
               Product
             </Link>
           </li>
 
           <li>
-            <Link href="/cart" className={`${styles.menu_link} ${pathname === '/cart' ? styles.activenav : ''}`}>
+            <Link
+              href="/cart"
+              className={`${styles.menu_link} ${
+                pathname === "/cart" ? styles.activenav : ""
+              }`}
+            >
               Cart({totalProduct.length > 0 ? totalProduct.length : 0})
             </Link>
           </li>
           <li>
-
-            <Link href="/userOrder" className={`${styles.menu_link} ${pathname === '/cart' ? styles.activenav : ''}`}>
+            <Link
+              href="/userOrder"
+              className={`${styles.menu_link} ${
+                pathname === "/userOrder" ? styles.activenav : ""
+              }`}
+            >
               Order
             </Link>
           </li>
@@ -138,23 +182,22 @@ const Navbar = () => {
               <p
                 style={{
                   margin: "0px 5px",
-                  color:"#fd7e14",
-                  fontSize:"18px",
-                  fontWeight:"bold"
+                  color: "#fd7e14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
                 }}
               >
                 {userName}
               </p>
               <Dropdown menu={{ items }}>
-                <a>
+                <div>
                   <Space wrap size={16}>
                     <Avatar size="large" icon={<UserOutlined />} />
                   </Space>
-                </a>
+                </div>
               </Dropdown>
             </Row>
           </li>
-
         </ul>
       </div>
     </nav>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Col, Input, Row, message } from "antd";
+import { Button, Col, Flex, Input, Row, message } from "antd";
 import Image from "next/image";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
@@ -8,7 +8,8 @@ import { SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.service";
 import { useUserSingupMutation } from "@/redux/api/authApi/authApi";
-import loginImage from '../../assets/login.png'
+import loginImage from "../../assets/login.png";
+import Link from "next/link";
 type FormValues = {
   id: string;
   password: string;
@@ -23,7 +24,7 @@ const Singup = () => {
       // console.log(res);
       if (res) {
         message.success("User logged in successfully!");
-        router.push('/login');
+        router.push("/login");
       }
       storeUserInfo({ accessToken: res?.accessToken });
       // console.log(res);
@@ -56,10 +57,20 @@ const Singup = () => {
               <FormInput name="Email" type="text" size="large" label="Email" />
             </div>
             <div>
-              <FormInput name="FullName" type="text" size="large" label="FullName" />
+              <FormInput
+                name="FullName"
+                type="text"
+                size="large"
+                label="FullName"
+              />
             </div>
             <div>
-              <FormInput name="Number" type="text" size="large" label="Number" />
+              <FormInput
+                name="Number"
+                type="text"
+                size="large"
+                label="Number"
+              />
             </div>
             <div
               style={{
@@ -73,10 +84,14 @@ const Singup = () => {
                 label="Password"
               />
             </div>
-
-            <Button type="primary" htmlType="submit">
-              Singup
-            </Button>
+            <Flex justify="space-between" align="center">
+              <Button type="primary" htmlType="submit">
+                Singup
+              </Button>
+              <Button type="primary" htmlType="submit">
+               <Link href="/login">Already have an account?</Link>
+              </Button>
+            </Flex>
           </Form>
         </div>
       </Col>
